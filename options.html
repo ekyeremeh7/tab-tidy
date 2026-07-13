@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tab Tidy – Settings</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f17;
+      color: #e0e0f0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #16213e;
+      border-bottom: 1px solid #ffffff10;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    h1 { font-size: 20px; font-weight: 700; color: #fff; }
+    .subtitle { font-size: 13px; color: #666; }
+
+    .container { max-width: 700px; margin: 0 auto; padding: 32px 40px; }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6c63ff;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
+    }
+
+    .cat-card {
+      background: #1a1a2e;
+      border: 1px solid #ffffff0a;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .cat-name {
+      flex: 1;
+      background: #0f0f17;
+      border: 1px solid #ffffff10;
+      border-radius: 6px;
+      padding: 5px 10px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      width: 160px;
+    }
+
+    .color-select {
+      background: #0f0f17;
+      border: 1px solid #ffffff10;
+      border-radius: 6px;
+      padding: 5px 8px;
+      color: #ccc;
+      font-size: 12px;
+    }
+
+    .patterns-label {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .patterns-input {
+      width: 100%;
+      background: #0f0f17;
+      border: 1px solid #ffffff08;
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #ccc;
+      font-size: 12px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      resize: vertical;
+      min-height: 60px;
+      line-height: 1.6;
+    }
+
+    .patterns-input:focus { outline: none; border-color: #6c63ff44; }
+
+    .patterns-hint { font-size: 10px; color: #444; margin-top: 4px; }
+
+    .remove-btn {
+      background: #2b0d0d;
+      border: none;
+      color: #f87171;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover { background: #3b1010; }
+
+    .add-btn {
+      background: #1a1a2e;
+      border: 1px dashed #6c63ff55;
+      color: #6c63ff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 24px;
+      transition: all 0.15s;
+    }
+
+    .add-btn:hover { background: #1e1e3a; }
+
+    .save-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .save-btn {
+      background: linear-gradient(135deg, #6c63ff, #8b5cf6);
+      border: none;
+      color: white;
+      padding: 11px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .save-btn:hover { opacity: 0.9; }
+
+    .reset-btn {
+      background: transparent;
+      border: 1px solid #333;
+      color: #666;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .reset-btn:hover { border-color: #555; color: #999; }
+
+    .save-msg {
+      font-size: 12px;
+      color: #4ade80;
+      display: none;
+    }
+
+    .colors { display: flex; gap: 6px; align-items: center; }
+    .color-swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .color-swatch:hover { transform: scale(1.2); }
+    .color-swatch.selected { border-color: #fff; }
+
+    .swatch-purple { background: #9c7ffa; }
+    .swatch-cyan   { background: #22d3ee; }
+    .swatch-blue   { background: #60a5fa; }
+    .swatch-red    { background: #f87171; }
+    .swatch-green  { background: #4ade80; }
+    .swatch-yellow { background: #fbbf24; }
+    .swatch-orange { background: #fb923c; }
+    .swatch-grey   { background: #9ca3af; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-icon">🗂️</div>
+    <div>
+      <h1>Tab Tidy Settings</h1>
+      <div class="subtitle">Customize your grouping categories</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="section-title">Categories</div>
+    <div id="catList"></div>
+    <button class="add-btn" id="addBtn">+ Add Category</button>
+
+    <div class="save-row">
+      <button class="save-btn" id="saveBtn">Save Settings</button>
+      <button class="reset-btn" id="resetBtn">Reset to Defaults</button>
+      <span class="save-msg" id="saveMsg">✓ Saved!</span>
+    </div>
+  </div>
+
+  <script src="categories.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

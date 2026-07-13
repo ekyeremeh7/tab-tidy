@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Tidy – Smart Tab Grouper",
+  "short_name": "Tab Tidy",
+  "version": "1.0.0",
+  "description": "Instantly organizes your messy tabs into smart groups by category. One click to tidy up Work, Social, Entertainment, AI tools, and more.",
+  "permissions": ["tabs", "tabGroups", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Tab Tidy",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "options.html"
+}
