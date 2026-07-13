@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – Tab Tidy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f17;
+      color: #ddd;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px;
+    }
+
+    .card {
+      background: #1a1a2e;
+      border: 1px solid #ffffff0f;
+      border-radius: 20px;
+      max-width: 640px;
+      width: 100%;
+      padding: 48px 44px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .logo-text h1 { font-size: 20px; font-weight: 700; color: #fff; }
+    .logo-text p  { font-size: 12px; color: #666; }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .updated {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 32px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #bbb;
+      line-height: 1.75;
+    }
+
+    .highlight {
+      background: #0d2b0d;
+      border: 1px solid #1a4a1a;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #6dff6d;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      font-size: 14px;
+      color: #bbb;
+      line-height: 1.75;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #6c63ff;
+    }
+
+    a { color: #a78bfa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: #444;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <div class="logo-icon">🗂️</div>
+      <div class="logo-text">
+        <h1>Tab Tidy</h1>
+        <p>Smart Tab Grouper</p>
+      </div>
+    </div>
+
+    <h2>Privacy Policy</h2>
+    <div class="updated">Last updated: July 13, 2026</div>
+
+    <div class="highlight">
+      ✦ Tab Tidy does not collect, transmit, or share any personal data. Everything stays on your device.
+    </div>
+
+    <div class="section">
+      <h3>What we access</h3>
+      <p>Tab Tidy requests the following browser permissions:</p>
+      <br>
+      <ul>
+        <li><strong>tabs</strong> — to read the URLs of your open tabs so they can be grouped by category. Tab URLs are processed locally in your browser and never sent anywhere.</li>
+        <li><strong>tabGroups</strong> — to create, name, and color-code tab groups within your browser window.</li>
+        <li><strong>storage</strong> — to save your custom category settings (names, colors, URL patterns) locally using Chrome's built-in sync storage. This data stays within your Google account's sync and is never accessed by us.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>What we do NOT do</h3>
+      <ul>
+        <li>We do not collect any personal information</li>
+        <li>We do not track browsing history</li>
+        <li>We do not send any data to external servers</li>
+        <li>We do not use analytics or telemetry</li>
+        <li>We do not sell or share any data with third parties</li>
+        <li>We have no backend servers or databases</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Data storage</h3>
+      <p>Your category preferences are stored using <code>chrome.storage.sync</code>, which is a browser-native API. This syncs your settings across your own devices via your browser's built-in sync — it is governed by Google's privacy policy, not ours.</p>
+    </div>
+
+    <div class="section">
+      <h3>Open source</h3>
+      <p>Tab Tidy is fully open source. You can inspect every line of code at <a href="https://github.com/ekyeremeh7/tab-tidy" target="_blank">github.com/ekyeremeh7/tab-tidy</a>.</p>
+    </div>
+
+    <div class="section">
+      <h3>Contact</h3>
+      <p>Questions? Open an issue on <a href="https://github.com/ekyeremeh7/tab-tidy/issues" target="_blank">GitHub</a>.</p>
+    </div>
+  </div>
+
+  <footer>© 2026 Tab Tidy · <a href="https://github.com/ekyeremeh7/tab-tidy">GitHub</a></footer>
+</body>
+</html>

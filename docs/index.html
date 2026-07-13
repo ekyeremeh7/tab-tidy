@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Tidy – Smart Tab Grouper</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f17;
+      color: #ddd;
+      min-height: 100vh;
+    }
+
+    nav {
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ffffff08;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { font-size: 16px; font-weight: 700; color: #fff; }
+    .nav-link { font-size: 13px; color: #666; text-decoration: none; }
+    .nav-link:hover { color: #aaa; }
+
+    .hero {
+      text-align: center;
+      padding: 96px 20px 64px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1a1a2e;
+      border: 1px solid #6c63ff44;
+      color: #a78bfa;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    h1 span { background: linear-gradient(135deg, #6c63ff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .subtitle {
+      font-size: 18px;
+      color: #888;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #6c63ff, #8b5cf6);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .cta:hover { opacity: 0.85; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 860px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+
+    .feat {
+      background: #1a1a2e;
+      border: 1px solid #ffffff08;
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .feat-icon { font-size: 28px; margin-bottom: 12px; }
+    .feat h3 { font-size: 15px; color: #fff; margin-bottom: 6px; }
+    .feat p  { font-size: 13px; color: #777; line-height: 1.6; }
+
+    footer {
+      border-top: 1px solid #ffffff08;
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #444;
+    }
+
+    footer a { color: #666; text-decoration: none; }
+    footer a:hover { color: #aaa; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">
+      <div class="logo-icon">🗂️</div>
+      <span>Tab Tidy</span>
+    </div>
+    <div style="display:flex;gap:24px">
+      <a class="nav-link" href="https://github.com/ekyeremeh7/tab-tidy">GitHub</a>
+      <a class="nav-link" href="privacy.html">Privacy Policy</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="badge">Chrome & Brave Extension</div>
+    <h1>Tidy tabs.<br><span>Instantly.</span></h1>
+    <p class="subtitle">One click organizes all your open tabs into smart, color-coded groups — Work, AI, Social, Entertainment, and more.</p>
+    <a class="cta" href="https://github.com/ekyeremeh7/tab-tidy">View on GitHub →</a>
+  </div>
+
+  <div class="features">
+    <div class="feat">
+      <div class="feat-icon">⚡</div>
+      <h3>One Click</h3>
+      <p>Groups all ungrouped tabs in seconds. No setup required.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🎨</div>
+      <h3>Color Coded</h3>
+      <p>Each category gets its own color so you can find tabs at a glance.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">↩</div>
+      <h3>Undo</h3>
+      <p>Changed your mind? Restore everything back with one tap.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">⚙</div>
+      <h3>Customizable</h3>
+      <p>Add your own categories with custom URL patterns and colors.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔒</div>
+      <h3>Private</h3>
+      <p>No data collection. Everything runs locally in your browser.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🪟</div>
+      <h3>All Windows</h3>
+      <p>Group tabs across a single window or all windows at once.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Tab Tidy</span>
+    <div style="display:flex;gap:20px">
+      <a href="https://github.com/ekyeremeh7/tab-tidy">GitHub</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>
