@@ -10,8 +10,11 @@ const COLOR_DOT = {
 // ── Boot ──────────────────────────────────────────────────────────────────────
 
 async function boot() {
-  const saved = await chrome.storage.sync.get(["categories", "autoGroupOnStartup", "autoGroupOnNewTab"]);
+  const saved = await chrome.storage.sync.get([
+    "categories", "autoGroupOnStartup", "autoGroupOnNewTab", "userRules"
+  ]);
   const cats = saved.categories || DEFAULT_CATEGORIES;
+  const userRules = saved.userRules || {};
   renderChips(cats);
 
   // Restore toggle states
@@ -36,7 +39,7 @@ async function boot() {
     await chrome.storage.sync.set({ autoGroupOnNewTab: e.target.checked });
   });
 
-  document.getElementById("groupBtn").addEventListener("click", () => run(cats));
+  document.getElementById("groupBtn").addEventListener("click", () => run(cats, userRules));
   document.getElementById("undoBtn").addEventListener("click", undo);
   document.getElementById("optionsLink").addEventListener("click", () => chrome.runtime.openOptionsPage());
 }
@@ -54,22 +57,9 @@ function renderChips(cats) {
   });
 }
 
-// ── Categorise a URL ──────────────────────────────────────────────────────────
-
-function categorize(url, cats) {
-  if (!url) return null;
-  const lower = url.toLowerCase();
-  for (const cat of cats) {
-    for (const p of cat.patterns) {
-      if (lower.includes(p.toLowerCase())) return cat;
-    }
-  }
-  return null;
-}
-
 // ── Main run ──────────────────────────────────────────────────────────────────
 
-async function run(cats) {
+async function run(cats, userRules) {
   const btn = document.getElementById("groupBtn");
   const statusEl = document.getElementById("status");
   btn.disabled = true;
@@ -95,7 +85,7 @@ async function run(cats) {
     const otherIds = [];
 
     for (const tab of eligible) {
-      const cat = categorize(tab.url, cats);
+      const cat = categorize(tab.url, tab.title, cats, userRules);
       if (cat) {
         if (!buckets.has(cat.id)) buckets.set(cat.id, { cat, tabIds: [] });
         buckets.get(cat.id).tabIds.push(tab.id);

@@ -5,17 +5,6 @@ importScripts("categories.js");
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-function categorize(url, cats) {
-  if (!url) return null;
-  const lower = url.toLowerCase();
-  for (const cat of cats) {
-    for (const p of cat.patterns) {
-      if (lower.includes(p.toLowerCase())) return cat;
-    }
-  }
-  return null;
-}
-
 function isSkippable(url) {
   if (!url) return true;
   return (
@@ -34,6 +23,7 @@ async function getSettings() {
     autoGroupOnStartup: false,
     autoGroupOnNewTab: false,
     categories: DEFAULT_CATEGORIES,
+    userRules: {},
   };
   const saved = await chrome.storage.sync.get(Object.keys(defaults));
   return { ...defaults, ...saved };
@@ -41,7 +31,7 @@ async function getSettings() {
 
 // ── Core grouping logic (window-scoped) ───────────────────────────────────────
 
-async function groupWindowTabs(windowId, cats) {
+async function groupWindowTabs(windowId, cats, userRules) {
   const tabs = await chrome.tabs.query({
     windowId,
     groupId: chrome.tabGroups.TAB_GROUP_ID_NONE,
@@ -54,7 +44,7 @@ async function groupWindowTabs(windowId, cats) {
   const otherIds = [];
 
   for (const tab of eligible) {
-    const cat = categorize(tab.url, cats);
+    const cat = categorize(tab.url, tab.title, cats, userRules);
     if (cat) {
       if (!buckets.has(cat.id)) buckets.set(cat.id, { cat, tabIds: [] });
       buckets.get(cat.id).tabIds.push(tab.id);
@@ -110,10 +100,10 @@ async function updateBadge() {
 // ── Auto-group all windows ────────────────────────────────────────────────────
 
 async function autoGroupAll() {
-  const { categories } = await getSettings();
+  const { categories, userRules } = await getSettings();
   const windows = await chrome.windows.getAll();
   for (const win of windows) {
-    await groupWindowTabs(win.id, categories);
+    await groupWindowTabs(win.id, categories, userRules);
   }
   await updateBadge();
 }
@@ -153,7 +143,7 @@ chrome.tabs.onCreated.addListener(async (tab) => {
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   await updateBadge();
 
-  const { autoGroupOnNewTab, categories } = await getSettings();
+  const { autoGroupOnNewTab, categories, userRules } = await getSettings();
   if (!autoGroupOnNewTab) return;
 
   // Only act when tab finishes loading and is currently ungrouped
@@ -161,7 +151,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (tab.groupId !== chrome.tabGroups.TAB_GROUP_ID_NONE) return;
   if (isSkippable(tab.url)) return;
 
-  const cat = categorize(tab.url, categories);
+  const cat = categorize(tab.url, tab.title, categories, userRules);
   if (!cat) return;
 
   try {

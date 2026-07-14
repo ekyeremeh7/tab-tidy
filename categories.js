@@ -1,39 +1,30 @@
-// Default categories — shared between popup and options page
+// Default categories — shared between popup, background, and options page
+
 const DEFAULT_CATEGORIES = [
   {
     id: "work",
     name: "Productivity",
     color: "purple",
     patterns: [
-      // Local dev
       "localhost", "127.0.0.1", "192.168.",
-      // Project management
       "atlassian.net", "jira.", "confluence.", "linear.app",
       "trello.com", "asana.com", "monday.com", "basecamp.com",
       "clickup.com", "height.app", "shortcut.com",
-      // Code & repos
       "github.com", "gitlab.com", "bitbucket.org", "codepen.io",
       "replit.com", "codesandbox.io", "stackblitz.com",
-      // Hosting & infra
       "vercel.app", "netlify.app", "render.com", "railway.app",
       "heroku.com", "fly.io", "digitalocean.com", "aws.amazon.com",
       "cloud.google.com", "azure.microsoft.com", "supabase.co",
       "firebase.google.com", "planetscale.com", "neon.tech",
-      // Docs & notes
-      "notion.so", "app.notion.com", "www.notion.so",
-      "confluence.", "coda.io", "slab.com",
-      // Design
+      "notion.so", "app.notion.com", "www.notion.so", "notion.com",
+      "coda.io", "slab.com",
       "figma.com", "sketch.com", "zeplin.io", "invisionapp.com",
       "framer.com", "canva.com",
-      // API & testing
       "postman.co", "insomnia.rest", "hoppscotch.io",
-      // App stores / consoles
       "play.google.com/console", "appstoreconnect.apple.com",
       "developer.apple.com", "chromewebstore.google.com",
       "console.firebase.google.com", "console.cloud.google.com",
-      // Job / freelance
       "skillsire.com", "upwork.com", "toptal.com",
-      // Docs
       "stackoverflow.com", "developer.mozilla.org", "w3schools.com",
       "docs.flutter.dev", "pub.dev"
     ]
@@ -80,22 +71,17 @@ const DEFAULT_CATEGORIES = [
     name: "Entertainment",
     color: "red",
     patterns: [
-      // Video
       "youtube.com", "youtu.be",
       "netflix.com", "hulu.com", "disneyplus.com", "primevideo.com",
       "max.com", "peacocktv.com", "paramountplus.com", "appletv.com",
       "crunchyroll.com", "funimation.com",
-      // Streaming / free movies
       "watchluna.com", "hurawatch", "fmovies", "123movies",
       "putlocker", "soap2day", "lookmovie",
-      // Live & sports
       "twitch.tv", "kick.com",
       "score808", "livescore", "sofascore.com", "espn.com",
       "bbc.co.uk/sport", "skysports.com", "goal.com",
-      // Music
       "spotify.com", "music.youtube.com", "soundcloud.com",
       "tidal.com", "deezer.com", "music.apple.com",
-      // Gaming
       "store.steampowered.com", "epicgames.com", "itch.io"
     ]
   },
@@ -112,7 +98,7 @@ const DEFAULT_CATEGORIES = [
       "mint.com", "ynab.com",
       "polymarket.com",
       "bloomberg.com", "finance.yahoo.com", "investing.com",
-      "grey.co", "chipper"
+      "grey.co", "chipper", "paystack.com", "flutterwave.com"
     ]
   },
   {
@@ -139,3 +125,152 @@ const DEFAULT_CATEGORIES = [
     ]
   }
 ];
+
+// Smart keyword fallback — catches unknown domains by URL + page title
+// Checked in priority order (most specific first)
+const SMART_KEYWORDS = [
+  {
+    id: "ai",
+    keywords: [
+      "chatgpt", "openai", "claude", "anthropic", "gemini", "copilot",
+      "deepseek", "perplexity", "huggingface", "midjourney", "stable diffusion",
+      "artificial intelligence", " ai ", " llm", "machine learning",
+      "prompt", "gpt-", "grok", "mistral", "cohere"
+    ]
+  },
+  {
+    id: "entertainment",
+    keywords: [
+      "netflix", "hulu", "disney+", "disney plus", "prime video", "hbo",
+      "stream", "streaming", "watch online", "watch free", "free movie",
+      "movie", "movies", "film", "films", "cinema", "tv series", "tv show",
+      "episode", "season ", "anime", "cartoon", "documentary",
+      "football live", "soccer live", "live score", "livestream", "live stream",
+      "twitch", "spotify", "soundcloud", "podcast", "gaming", "gameplay",
+      "trailer", "full movie", "watch party"
+    ]
+  },
+  {
+    id: "finance",
+    keywords: [
+      "interactive brokers", "ibkr", "robinhood", "coinbase", "binance",
+      "bank", "banking", "broker", "brokerage", "trading", "trade ",
+      "invest", "investment", "portfolio", "stock", "stocks", "equity",
+      "crypto", "bitcoin", "ethereum", "wallet", "payment", "invoice",
+      "billing", "finance", "financial", "forex", "exchange rate"
+    ]
+  },
+  {
+    id: "work",
+    keywords: [
+      "dashboard", "console", "admin panel", "admin portal", "workspace",
+      "developer", "documentation", "docs", "api reference",
+      "project management", "backlog", "sprint", "kanban", "roadmap",
+      "notion", "jira", "figma", "github", "gitlab", "deploy",
+      "staging", "preview", "localhost", "pull request", "merge request"
+    ]
+  },
+  {
+    id: "news",
+    keywords: [
+      " breaking ", "headline", "headlines", "newsletter", "newspaper",
+      " daily ", " times ", " post ", " journal", " tribune", " herald",
+      "reuters", "associated press", "article", "magazine", "editorial"
+    ]
+  },
+  {
+    id: "shopping",
+    keywords: [
+      "add to cart", "shopping cart", "checkout", "buy now", "marketplace",
+      "free shipping", "shop now", "online store", "ecommerce", "e-commerce"
+    ]
+  },
+  {
+    id: "social",
+    keywords: [
+      "inbox", "gmail", "outlook mail", "email", "e-mail",
+      "messenger", "whatsapp", "telegram", "direct message",
+      "social network", "news feed", "timeline", "followers", "following",
+      "instagram", "facebook", "linkedin", "reddit", "tiktok"
+    ]
+  }
+];
+
+function getHostname(url) {
+  try {
+    return new URL(url).hostname.toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
+function matchesPattern(url, pattern) {
+  const lowerUrl = url.toLowerCase();
+  const lowerPattern = pattern.toLowerCase();
+  const host = getHostname(url);
+
+  // Path-sensitive patterns (e.g. x.com/, play.google.com/console)
+  if (lowerPattern.includes("/")) {
+    return lowerUrl.includes(lowerPattern);
+  }
+
+  // Domain-like patterns: prefer hostname match to avoid false positives
+  if (lowerPattern.includes(".")) {
+    return host === lowerPattern ||
+      host.endsWith("." + lowerPattern) ||
+      host.includes(lowerPattern);
+  }
+
+  // Short tokens (localhost, score808, etc.)
+  return lowerUrl.includes(lowerPattern) || host.includes(lowerPattern);
+}
+
+function smartCategorize(url, title) {
+  const host = getHostname(url);
+  const haystack = ` ${host} ${(url || "").toLowerCase()} ${(title || "").toLowerCase()} `;
+
+  let best = null;
+  let bestScore = 0;
+
+  for (const { id, keywords } of SMART_KEYWORDS) {
+    for (const kw of keywords) {
+      const needle = kw.toLowerCase();
+      if (haystack.includes(needle)) {
+        const score = needle.length + (host.includes(needle.replace(/\s/g, "")) ? 5 : 0);
+        if (score > bestScore) {
+          bestScore = score;
+          best = id;
+        }
+      }
+    }
+  }
+
+  return best;
+}
+
+function categorize(url, title, cats, userRules) {
+  if (!url) return null;
+
+  const host = getHostname(url);
+
+  // 1. User-learned domain rules (future: right-click "always group as…")
+  if (userRules && host && userRules[host]) {
+    const ruleCat = cats.find(c => c.id === userRules[host]);
+    if (ruleCat) return ruleCat;
+  }
+
+  // 2. Explicit URL patterns
+  for (const cat of cats) {
+    for (const p of cat.patterns || []) {
+      if (matchesPattern(url, p)) return cat;
+    }
+  }
+
+  // 3. Smart keyword fallback from URL + title
+  const smartId = smartCategorize(url, title);
+  if (smartId) {
+    return cats.find(c => c.id === smartId) || null;
+  }
+
+  return null;
+}
