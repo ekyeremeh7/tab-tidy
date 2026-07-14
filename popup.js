@@ -10,16 +10,30 @@ const COLOR_DOT = {
 // ── Boot ──────────────────────────────────────────────────────────────────────
 
 async function boot() {
-  const saved = await chrome.storage.sync.get("categories");
+  const saved = await chrome.storage.sync.get(["categories", "autoGroupOnStartup", "autoGroupOnNewTab"]);
   const cats = saved.categories || DEFAULT_CATEGORIES;
   renderChips(cats);
 
+  // Restore toggle states
+  document.getElementById("autoStartup").checked = !!saved.autoGroupOnStartup;
+  document.getElementById("autoNewTab").checked   = !!saved.autoGroupOnNewTab;
+
+  // Scope buttons
   document.querySelectorAll(".scope-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".scope-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       scope = btn.dataset.scope;
     });
+  });
+
+  // Auto-group toggles
+  document.getElementById("autoStartup").addEventListener("change", async e => {
+    await chrome.storage.sync.set({ autoGroupOnStartup: e.target.checked });
+  });
+
+  document.getElementById("autoNewTab").addEventListener("change", async e => {
+    await chrome.storage.sync.set({ autoGroupOnNewTab: e.target.checked });
   });
 
   document.getElementById("groupBtn").addEventListener("click", () => run(cats));
