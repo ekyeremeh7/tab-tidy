@@ -2,7 +2,7 @@
 const DEFAULT_CATEGORIES = [
   {
     id: "work",
-    name: "Work & Dev",
+    name: "Productivity",
     color: "purple",
     patterns: [
       // Local dev
