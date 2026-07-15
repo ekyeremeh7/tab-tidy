@@ -2,7 +2,7 @@
 
 > Instantly organizes your messy browser tabs into smart groups with one click.
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-live-blue?logo=googlechrome)](https://chromewebstore.google.com)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-install-blue?logo=googlechrome)](https://chromewebstore.google.com/detail/tab-tidy-smart-tab-grouper/ehbiimohpcmhdbpoebgnhdhemblemcdi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
 ---
@@ -34,7 +34,7 @@
 
 ## 🚀 Install
 
-**Chrome Web Store** — search for "Tab Tidy" or install from the [Chrome Web Store](https://chromewebstore.google.com).
+**Chrome Web Store** — [Install Tab Tidy](https://chromewebstore.google.com/detail/tab-tidy-smart-tab-grouper/ehbiimohpcmhdbpoebgnhdhemblemcdi)
 
 **Developer mode:**
 1. Clone this repo
