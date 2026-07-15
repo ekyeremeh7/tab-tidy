@@ -2,7 +2,7 @@
 
 > Instantly organizes your messy browser tabs into smart groups with one click.
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-blue?logo=googlechrome)](https://chromewebstore.google.com)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-live-blue?logo=googlechrome)](https://chromewebstore.google.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
 ---
@@ -10,7 +10,10 @@
 ## ✨ Features
 
 - **One-click grouping** — sorts all ungrouped tabs into labeled, color-coded groups
-- **Smart categorization** — Work & Dev, AI & Tools, Social & Email, Entertainment, Shopping, News, and more
+- **Smart categorization** — URL patterns + title keyword fallback for global coverage
+- **Auto-group on startup** — optional toggle to tidy tabs when the browser opens
+- **Auto-group as you browse** — new tabs sorted into existing groups automatically
+- **Badge count** — extension icon shows how many ungrouped tabs remain
 - **This Window or All Windows** — choose your scope before grouping
 - **Undo** — instantly reverses the last grouping
 - **Fully customizable** — add, rename, recolor, or remove any category via the settings page
@@ -20,16 +23,20 @@
 
 | Group | Color | Matches |
 |-------|-------|---------|
-| Work & Dev | 🟣 Purple | GitHub, Jira, Notion, localhost, Postman, Figma… |
-| AI & Tools | 🔵 Cyan | Claude, ChatGPT, Cursor, Composio, Gemini… |
+| Productivity | 🟣 Purple | GitHub, Jira, Notion, Play Console, localhost, Figma… |
+| AI & Tools | 🔵 Cyan | Claude, ChatGPT, DeepSeek, Cursor, Gemini… |
 | Social & Email | 🔵 Blue | Gmail, X, Instagram, LinkedIn, Discord… |
-| Entertainment | 🔴 Red | YouTube, Netflix, Twitch, Spotify… |
-| Shopping | 🟢 Green | Amazon, Etsy, Shopify… |
-| News & Reading | 🟡 Yellow | BBC, Medium, Hacker News, Dev.to… |
+| Entertainment | 🔴 Red | YouTube, Netflix, streaming, sports, music… |
+| Finance | 🟢 Green | IBKR, Robinhood, Coinbase, PayPal, trading… |
+| Shopping | 🟡 Yellow | Amazon, Etsy, Shopify… |
+| News & Reading | 🟠 Orange | BBC, Medium, Hacker News, TechCrunch… |
 | Other | ⚫ Grey | Anything that doesn't match above |
 
-## 🚀 Install (Developer Mode)
+## 🚀 Install
 
+**Chrome Web Store** — search for "Tab Tidy" or install from the [Chrome Web Store](https://chromewebstore.google.com).
+
+**Developer mode:**
 1. Clone this repo
 2. Open `brave://extensions` or `chrome://extensions`
 3. Enable **Developer mode**
@@ -46,8 +53,9 @@ Settings are synced across devices via Chrome/Brave sync.
 
 ## 🗺️ Roadmap
 
-- [ ] Auto-group on browser startup
-- [ ] Per-domain icon badges
+- [x] Auto-group on browser startup
+- [x] Smart keyword categorization
+- [ ] User-taught domains ("Always group as…")
 - [ ] Import/export category presets
 - [ ] Firefox support
 
