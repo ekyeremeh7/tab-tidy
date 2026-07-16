@@ -26,10 +26,11 @@
 | Productivity | 🟣 Purple | Google Workspace, GitHub, Notion, Zoom, Figma, Wikipedia… |
 | AI & Tools | 🔵 Cyan | Claude, ChatGPT, DeepSeek, Cursor, Gemini… |
 | Education | 🩷 Pink | Coursera, Udemy, Khan Academy, Google Classroom… |
+| Health | 🟢 Green | Felix, telehealth, pharmacies, WebMD, patient portals… |
 | Social & Email | 🔵 Blue | Gmail, X, Instagram, LinkedIn, Discord… |
 | Entertainment | 🔴 Red | YouTube, Netflix, streaming, sports, music… |
-| Finance | 🟢 Green | Banks, brokers, crypto, PayPal, trading… |
-| Shopping | 🟡 Yellow | Amazon, Etsy, Walmart, regional marketplaces… |
+| Finance | 🟡 Yellow | Banks, brokers, crypto, PayPal, trading… |
+| Shopping | ⚫ Grey | Amazon, Etsy, Yellow Pages, business directories… |
 | Travel | ⚫ Grey | Booking, Airbnb, flights, maps, ride-share… |
 | News & Reading | 🟠 Orange | BBC, Medium, TechCrunch, Hacker News… |
 | Other | ⚫ Grey | Anything that doesn't match above |

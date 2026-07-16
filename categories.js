@@ -48,7 +48,8 @@ const DEFAULT_CATEGORIES = [
       "wikipedia.org", "wikimedia.org", "wiktionary.org",
       "1password.com", "bitwarden.com", "lastpass.com", "dashlane.com",
       "grammarly.com", "overleaf.com", "roamresearch.com",
-      "evernote.com", "todoist.com", "ticktick.com", "any.do"
+      "evernote.com", "todoist.com", "ticktick.com", "any.do",
+      "origginenterpriseapp.com", "enterpriseapp.com"
     ]
   },
   {
@@ -91,6 +92,22 @@ const DEFAULT_CATEGORIES = [
       "scholar.google.com", "researchgate.net", "academia.edu",
       "arxiv.org", "semanticscholar.org",
       "khanacademy.org", "pbs.org/learning"
+    ]
+  },
+  {
+    id: "health",
+    name: "Health",
+    color: "green",
+    patterns: [
+      "felixforyou.ca", "felixhealth.ca",
+      "maple.ca", "telushealth.com", "dialogue.co", "tiahealth.com",
+      "goodrx.com", "cvs.com", "walgreens.com", "riteaid.com",
+      "pharmacy.ca", "shoppersdrugmart.ca",
+      "webmd.com", "healthline.com", "mayoclinic.org", "nih.gov",
+      "nhs.uk", "cdc.gov", "who.int",
+      "zocdoc.com", "onemedical.com", "plushcare.com",
+      "betterhelp.com", "talkspace.com", "headspace.com", "calm.com",
+      "mychart.", "patientportal", "telehealth", "virtual care"
     ]
   },
   {
@@ -141,7 +158,7 @@ const DEFAULT_CATEGORIES = [
   {
     id: "finance",
     name: "Finance",
-    color: "green",
+    color: "yellow",
     patterns: [
       "ibkr.com", "interactivebrokers.com",
       "robinhood.com", "etrade.com", "fidelity.com", "schwab.com",
@@ -162,7 +179,7 @@ const DEFAULT_CATEGORIES = [
   {
     id: "shopping",
     name: "Shopping",
-    color: "yellow",
+    color: "grey",
     patterns: [
       "amazon.com", "amazon.co.uk", "amazon.de", "amazon.fr",
       "ebay.com", "etsy.com",
@@ -171,7 +188,10 @@ const DEFAULT_CATEGORIES = [
       "jumia.com", "konga.com", "takealot.com",
       "flipkart.com", "mercadolibre.com", "rakuten.com",
       "wayfair.com", "ikea.com", "homedepot.com", "lowes.com",
-      "wish.com", "poshmark.com", "depop.com"
+      "wish.com", "poshmark.com", "depop.com",
+      "yellowpages.com.gh", "yellowpages.com", "yellowpages.ca",
+      "yelp.com", "tripadvisor.com/places", "foursquare.com",
+      "angi.com", "thumbtack.com"
     ]
   },
   {
@@ -228,6 +248,18 @@ const SMART_KEYWORDS = [
       "study guide", "flashcard", "quiz", "exam prep", "university",
       "college", "school portal", "student portal", "learning platform",
       "mooc", "e-learning", "elearning", "course material"
+    ]
+  },
+  {
+    id: "health",
+    keywords: [
+      "telehealth", "telemedicine", "virtual care", "online prescription",
+      "prescription", "prescriptions", "pharmacy", "pharmacist",
+      "medication", "medications", "healthcare", "health care",
+      "treatment", "treatments", "practitioner", "nurse practitioner",
+      "doctor", "physician", "clinic", "hospital", "patient portal",
+      "medical", "health", "symptoms", "diagnosis", "wellness",
+      "mental health", "therapy", "counselling", "counseling"
     ]
   },
   {
@@ -293,7 +325,10 @@ const SMART_KEYWORDS = [
       "add to cart", "added to cart", "shopping cart", "checkout",
       "buy now", "shop now", "marketplace", "free shipping",
       "online store", "ecommerce", "e-commerce", "order confirmation",
-      "track order", "delivery status", "product details"
+      "track order", "delivery status", "product details",
+      "business directory", "yellow pages", "yellowpages",
+      "find a business", "list your business", "local business",
+      "business listing", "shop directory"
     ]
   },
   {
@@ -314,6 +349,10 @@ const HOSTNAME_HINTS = [
   { id: "education", test: h => h.includes("classroom.google") || h.includes("moodle.") || h.includes("instructure.com") },
   { id: "work", test: h => h.startsWith("docs.") || h.startsWith("drive.") || h.includes(".docs.") },
   { id: "work", test: h => h.startsWith("console.") || h.includes("admin.") && !h.includes("wordpress") },
+  { id: "work", test: h => h.includes("enterpriseapp.com") || h.endsWith("enterpriseapp.com") },
+  { id: "health", test: h => h.includes("pharmacy") || h.includes("telehealth") || h.includes("mychart") },
+  { id: "health", test: h => h.includes("felix") && (h.includes("health") || h.includes("for")) },
+  { id: "shopping", test: h => h.includes("yellowpages") || h.includes("yelp.") },
   { id: "travel", test: h => h.includes("booking.") || h.includes("airbnb") || h.includes("expedia") },
   { id: "finance", test: h => h.includes("bank") || h.includes("broker") || h.includes("trading") },
   { id: "entertainment", test: h => h.startsWith("watch.") },
@@ -339,7 +378,8 @@ function matchesPattern(url, pattern) {
   if (lowerPattern.includes(".")) {
     return host === lowerPattern ||
       host.endsWith("." + lowerPattern) ||
-      host.includes(lowerPattern);
+      host.includes(lowerPattern) ||
+      lowerUrl.includes(lowerPattern);
   }
 
   return lowerUrl.includes(lowerPattern) || host.includes(lowerPattern);
