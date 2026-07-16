@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Tidy – Smart Tab Grouper",
   "short_name": "Tab Tidy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "One click to group all your tabs by category — Work, AI, Social, Entertainment and more. Fully customizable. 100% private.",
   "permissions": ["tabs", "tabGroups", "storage", "windows"],
   "action": {

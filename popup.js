@@ -4,7 +4,7 @@ let lastGroupIds = []; // for undo
 const COLOR_DOT = {
   purple: "dot-purple", cyan: "dot-cyan", blue: "dot-blue",
   red: "dot-red", green: "dot-green", yellow: "dot-yellow",
-  orange: "dot-orange", grey: "dot-grey"
+  orange: "dot-orange", grey: "dot-grey", pink: "dot-pink"
 };
 
 // ── Boot ──────────────────────────────────────────────────────────────────────

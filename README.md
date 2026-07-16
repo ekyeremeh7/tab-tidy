@@ -23,13 +23,15 @@
 
 | Group | Color | Matches |
 |-------|-------|---------|
-| Productivity | 🟣 Purple | GitHub, Jira, Notion, Play Console, localhost, Figma… |
+| Productivity | 🟣 Purple | Google Workspace, GitHub, Notion, Zoom, Figma, Wikipedia… |
 | AI & Tools | 🔵 Cyan | Claude, ChatGPT, DeepSeek, Cursor, Gemini… |
+| Education | 🩷 Pink | Coursera, Udemy, Khan Academy, Google Classroom… |
 | Social & Email | 🔵 Blue | Gmail, X, Instagram, LinkedIn, Discord… |
 | Entertainment | 🔴 Red | YouTube, Netflix, streaming, sports, music… |
-| Finance | 🟢 Green | IBKR, Robinhood, Coinbase, PayPal, trading… |
-| Shopping | 🟡 Yellow | Amazon, Etsy, Shopify… |
-| News & Reading | 🟠 Orange | BBC, Medium, Hacker News, TechCrunch… |
+| Finance | 🟢 Green | Banks, brokers, crypto, PayPal, trading… |
+| Shopping | 🟡 Yellow | Amazon, Etsy, Walmart, regional marketplaces… |
+| Travel | ⚫ Grey | Booking, Airbnb, flights, maps, ride-share… |
+| News & Reading | 🟠 Orange | BBC, Medium, TechCrunch, Hacker News… |
 | Other | ⚫ Grey | Anything that doesn't match above |
 
 ## 🚀 Install
